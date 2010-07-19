@@ -1,0 +1,13 @@
+Given a table of bigrams and a table of unigrams:
+407 of the
+128 in the
+4 hand of
+
+2003 of
+1000 the
+452 hound
+
+calculate:
+P(w1w2)           f(w1w2) / # of bigrams            f(w1w2) * (# of words)^2
+-------------   = ------------------------------ =  ----------------------------
+P(w1) * P(w2)     f(w1) * f(w2) / (# of words)^2    f(w1) * f(w2) * # of bigrams 
