@@ -1,6 +1,13 @@
 class Frequencies
-  def initialize(table)
-    @table = table
+  def initialize(raw)
+    @table = {}
+    
+    raw.each_line do |line|
+      frequency = line.split(' ')[0].to_i
+      pattern   = line.split(' ')[1..-1].join(' ')
+      
+      @table[pattern] = frequency
+    end
   end
   
   def each &iterator
@@ -8,15 +15,10 @@ class Frequencies
   end
   
   def total
-    all_frequencies.inject(0) {|sum, element| sum += element }
+    @table.values.inject(0) {|sum, element| sum += element }
   end
   
-  def frequency_of(word)
-    @table.find {|u| u["w"] == word.downcase}["f"].to_i
-  end
-  
-private
-  def all_frequencies
-    @table.map {|row| row["f"].to_i}
+  def frequency_of(pattern)
+    @table[pattern]
   end
 end

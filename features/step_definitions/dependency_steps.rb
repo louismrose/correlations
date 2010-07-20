@@ -1,11 +1,11 @@
 require 'lib/dependency_calculator'
 
-Given "the following bigram frequencies:" do |bigram_frequencies_table|
-  @bigrams = bigram_frequencies_table.hashes
+Given /^the following bigram frequencies$/ do |bigrams|
+  @bigrams = bigrams
 end
 
-Given "the following unigram frequencies:" do |unigram_frequencies_table|
-  @unigrams = unigram_frequencies_table.hashes
+Given /^the following unigram frequencies$/ do |unigrams|
+  @unigrams = unigrams
 end
 
 When "I calculate the dependencies" do

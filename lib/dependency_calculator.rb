@@ -1,21 +1,17 @@
-require 'lib/frequency'
+require 'lib/frequencies'
 
 class DependencyCalculator
 
   def initialize(bigram_frequencies, unigram_frequencies)
-    @bigram_frequencies = bigram_frequencies
-    @no_of_bigrams = @bigram_frequencies.map {|b| b["f"].to_i}.inject(0) {|sum, element| sum += element }
-    
-    @unigram_frequencies = unigram_frequencies
-    @no_of_unigrams = @unigram_frequencies.map {|b| b["f"].to_i}.inject(0) {|sum, element| sum += element }
+    @bigram_frequencies  = Frequencies.new(bigram_frequencies)
+    @unigram_frequencies = Frequencies.new(unigram_frequencies)
   end
 
   def run
     dependencies = {}
     
-    @bigram_frequencies.each do |bigram|
-      key = bigram["w1"] + ' ' + bigram["w2"]
-      dependencies[key] = calculate_dependency_for(bigram["w1"], bigram["w2"], bigram["f"].to_f)
+    @bigram_frequencies.each do |pattern, frequency|
+      dependencies[pattern] = calculate_dependency_for(pattern, frequency)
     end
     
     dependencies
@@ -23,11 +19,14 @@ class DependencyCalculator
   
 private
   
-  def calculate_dependency_for(w1, w2, w1w2_f)
-    w1_f = @unigram_frequencies.find {|u| u["w"] == w1.downcase}["f"].to_i
-    w2_f = @unigram_frequencies.find {|u| u["w"] == w2.downcase}["f"].to_i
-         
-    (w1w2_f * @no_of_unigrams * @no_of_unigrams) / (w1_f * w2_f * @no_of_bigrams)
+  def calculate_dependency_for(pattern, w1w2_f)
+    w1 = pattern.split(' ')[0]
+    w2 = pattern.split(' ')[1]
+        
+    w1_f = @unigram_frequencies.frequency_of(w1.downcase)
+    w2_f = @unigram_frequencies.frequency_of(w2.downcase)
+
+    (w1w2_f * @unigram_frequencies.total ** 2).fdiv (w1_f * w2_f * @bigram_frequencies.total)
   end
   
 end
