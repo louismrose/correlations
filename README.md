@@ -36,7 +36,7 @@ If you're behind a firewall, you may need to use HTTP:
 
 From within the correlations directory, the script is invoked using:
 
-    ./corrrelations.sh phrases.txt words.txt
+    ./correlations.sh phrases.txt words.txt
     
 This assumes two text files called phrases.txt and words.txt in the correlations directory, and prints the correlations to STDOUT. Each line of phrases.txt and words.txt must contain a frequency (number) followed by a phrase / word (string). See above for exemplar phrases and words.
 
