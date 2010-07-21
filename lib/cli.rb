@@ -5,8 +5,8 @@ class Cli
     if wrong_arguments?
       print_usage
     else
-      ngrams = readfile(arguments[0])
-      words  = readfile(arguments[1])
+      ngrams = read_file(arguments[0])
+      words  = read_file(arguments[1])
     
       print_correlations(ngrams, words)
     end
