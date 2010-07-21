@@ -1,4 +1,4 @@
-require 'lib/correlation_calculator'
+require 'correlation_calculator'
 
 Given /^the following n-gram frequencies$/ do |ngrams|
   @ngrams = ngrams

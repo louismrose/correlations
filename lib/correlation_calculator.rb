@@ -1,4 +1,4 @@
-require 'lib/frequencies'
+require 'frequencies'
 
 class CorrelationCalculator
 

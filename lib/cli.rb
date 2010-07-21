@@ -1,4 +1,6 @@
-require 'lib/correlation_calculator'
+$: << File.expand_path(File.dirname(__FILE__) + "/../lib")
+
+require 'correlation_calculator'
 
 class Cli  
   def run
