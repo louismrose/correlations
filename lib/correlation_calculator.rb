@@ -27,7 +27,7 @@ private
     
     product_of_word_probabilities = word_probabilities.inject(1) {|product, p| product *= p}
     
-    @ngram_frequencies.probability_of(ngram) / word_probabilities
+    @ngram_frequencies.probability_of(ngram) / product_of_word_probabilities
   end
   
 end
