@@ -13,12 +13,17 @@ class Frequencies
   def each &iterator
     @table.each &iterator
   end
+
+  def probability_of(pattern)
+    frequency_of(pattern) / total
+  end
   
+private
   def total
     @table.values.inject(0) {|sum, element| sum += element }
   end
   
   def frequency_of(pattern)
-    @table[pattern]
+    @table[pattern].to_f
   end
 end

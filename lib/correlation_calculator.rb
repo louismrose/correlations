@@ -2,16 +2,16 @@ require 'lib/frequencies'
 
 class CorrelationCalculator
 
-  def initialize(ngram_frequencies, unigram_frequencies)
-    @ngram_frequencies   = Frequencies.new(ngram_frequencies)
-    @unigram_frequencies = Frequencies.new(unigram_frequencies)
+  def initialize(ngram_frequencies, word_frequencies)
+    @ngram_frequencies = Frequencies.new(ngram_frequencies)
+    @word_frequencies  = Frequencies.new(word_frequencies)
   end
 
   def run
     correlations = {}
     
-    @ngram_frequencies.each do |pattern, frequency|
-      correlations[pattern] = calculate_correlation_for(pattern, frequency)
+    @ngram_frequencies.each do |ngram, frequency|
+      correlations[ngram] = calculate_correlation_for(ngram)
     end
     
     correlations
@@ -19,14 +19,15 @@ class CorrelationCalculator
   
 private
   
-  def calculate_correlation_for(pattern, w1w2_f)
-    words = pattern.split(' ')
+  # correlation = P(ngram) / (P(w1) * P(w2) * ... * P(wn))
+  def calculate_correlation_for(ngram)
+    words = ngram.split(' ')
     
-    word_frequencies = words.map {|w| @unigram_frequencies.frequency_of(w.downcase) }
+    word_probabilities = words.map {|w| @word_frequencies.probability_of(w.downcase) }
     
-    freq = word_frequencies.inject(1) {|product, f| product *= f}
-
-    (w1w2_f * @unigram_frequencies.total ** words.size).fdiv(freq * @ngram_frequencies.total)
+    product_of_word_probabilities = word_probabilities.inject(1) {|product, p| product *= p}
+    
+    @ngram_frequencies.probability_of(ngram) / word_probabilities
   end
   
 end
