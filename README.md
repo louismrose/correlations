@@ -38,9 +38,9 @@ If you're behind a firewall, you may need to use HTTP:
 
 ## Usage
 
-From within the correlations directory, the script is invoked using:
+Following installation, the script is invoked using:
 
-    ./correlations.sh phrases.txt words.txt
+    ./correlations/correlations.sh phrases.txt words.txt
     
 This assumes two text files called phrases.txt and words.txt in the correlations directory, and prints the correlations to STDOUT. Each line of phrases.txt and words.txt must contain a frequency (number) followed by a phrase / word (string). See above for exemplar phrases and words.
 
@@ -48,7 +48,7 @@ This assumes two text files called phrases.txt and words.txt in the correlations
 
 Passing a threshold argument causes the script to ignore phrases that contain a word with a frequency less than the threshold:
 
-    ./correlations.sh -threshold 5 phrases.txt words.txt
+    ./correlations/correlations.sh -threshold 5 phrases.txt words.txt
     
 The above command will ignore all phrases containing words that occur less than 5 times (according to words.txt)
 
