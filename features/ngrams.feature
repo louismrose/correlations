@@ -38,7 +38,7 @@ Scenario: Trigram correlations
         114 baskerville
         """
     When I calculate the correlations
-    Then the correlation of "upon the moor" should be 0.91
-    And  the correlation of "that it was" should be 0.73
-    And  the correlation of "Sir Henry Baskerville" should be 2.86
+    Then the correlation of "upon the moor" should be 1141.09
+    And  the correlation of "that it was" should be 127.84
+    And  the correlation of "Sir Henry Baskerville" should be 15988.56
 
