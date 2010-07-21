@@ -26,7 +26,7 @@ private
     
     freq = word_frequencies.inject(1) {|product, f| product *= f}
 
-    (w1w2_f * @unigram_frequencies.total ** words.size).fdiv (freq * @ngram_frequencies.total)
+    (w1w2_f * @unigram_frequencies.total ** words.size).fdiv(freq * @ngram_frequencies.total)
   end
   
 end
