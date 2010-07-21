@@ -9,10 +9,14 @@ Given /^the following word frequencies$/ do |unigrams|
 end
 
 When "I calculate the correlations" do
-  @correlations = CorrelationCalculator.new(@ngrams, @unigrams).run
+  When "I calculate the correlations with threshold 0"
+end
+
+When /^I calculate the correlations with threshold (\d*)$/ do |threshold|
+  @correlations = CorrelationCalculator.new(@ngrams, @unigrams, threshold.to_i).run
 end
 
 Then /^the correlation of "([^\"]*)" should be ([\d|.]*)$/ do |ngram, expected_correlation|
-  @correlations[ngram].should be_close expected_correlation.to_f, 0.01
+  @correlations[ngram.downcase].should be_close expected_correlation.to_f, 0.01
 end
   

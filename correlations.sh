@@ -1,1 +1,1 @@
-ruby lib/cli.rb $1 $2
+ruby lib/cli.rb $1 $2 $3 $4

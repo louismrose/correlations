@@ -4,7 +4,7 @@ class Frequencies
     
     raw.each_line do |line|
       frequency = line.split(' ')[0].to_i
-      pattern   = line.split(' ')[1..-1].join(' ')
+      pattern   = line.split(' ')[1..-1].join(' ').downcase
       
       @table[pattern] = frequency
     end
@@ -19,9 +19,8 @@ class Frequencies
   def probability_of(pattern)
     frequency_of(pattern) / @total
   end
-  
-private  
+
   def frequency_of(pattern)
-    @table[pattern].to_f
+    @table[pattern.downcase].to_f
   end
 end
