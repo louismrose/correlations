@@ -14,9 +14,9 @@ Scenario: Bigram correlations
       156 henry
       """
   When I calculate the correlations
-  Then the correlation of "of the" should be 3.99
-  And  the correlation of "in the" should be 3.82
-  And  the correlation of "Sir Henry" should be 139.77
+  Then the correlation of "of the" should be 1.38
+  And  the correlation of "in the" should be 1.34
+  And  the correlation of "Sir Henry" should be 4.94
   
 Scenario: Trigram correlations
     Given the following n-gram frequencies
@@ -38,7 +38,7 @@ Scenario: Trigram correlations
         114 baskerville
         """
     When I calculate the correlations
-    Then the correlation of "upon the moor" should be 1141.09
-    And  the correlation of "that it was" should be 127.84
-    And  the correlation of "Sir Henry Baskerville" should be 15988.56
+    Then the correlation of "upon the moor" should be 7.04
+    And  the correlation of "that it was" should be 4.85
+    And  the correlation of "Sir Henry Baskerville" should be 9.68
 
