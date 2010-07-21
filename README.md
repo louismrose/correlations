@@ -44,7 +44,7 @@ From within the correlations directory, the script is invoked using:
     
 This assumes two text files called phrases.txt and words.txt in the correlations directory, and prints the correlations to STDOUT. Each line of phrases.txt and words.txt must contain a frequency (number) followed by a phrase / word (string). See above for exemplar phrases and words.
 
-## Thresholds
+### Thresholds
 
 Passing a threshold argument causes the script to ignore phrases that contain a word with a frequency less than the threshold:
 
