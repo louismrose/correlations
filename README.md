@@ -18,9 +18,13 @@ And the following word frequencies:
     
 Correlations will generate the following values:
 
-    3.99 of the
-    3.82 in the
-    139.77 Sir Henry 
+    1.38 of the
+    1.34 in the
+    4.94 Sir Henry 
+
+These results indicate that the words "Sir" and "Henry" are more correlated than the words "in" and "the", and the words "of" and "the".
+
+Correlation values are calculated using [point-wise mutual information](http://en.wikipedia.org/wiki/Pointwise_mutual_information).   
 
 ## Installation
 
